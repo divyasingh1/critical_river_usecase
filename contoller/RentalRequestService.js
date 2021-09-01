@@ -62,6 +62,7 @@ class RentalRequestService {
         if (filter.ownerUserId) {
             dbFilter.ownerUserId = filter.ownerUserId;
         }
+
         var rentalRequestModelInst = new RentalRequestModel();
         return rentalRequestModelInst.findRentalRequest(dbFilter);
     }

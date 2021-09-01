@@ -36,7 +36,7 @@ router.get('/', function (req, res) {
     var propertyServiceInst = new PropertyService();
     return propertyServiceInst.findProperty(req.query)
         .then((data) => {
-            res.send({ "status": "SUCCESS", message: "Propery Fetched Successfully", data: data });
+            res.send({ "status": "SUCCESS", message: "Property Fetched Successfully", data: data });
         })
         .catch((err) => {
             res.status(500).send({ status: "Failed" , message: "Property Couldn't be fetched successfully", error: err});
