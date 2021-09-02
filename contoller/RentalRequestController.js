@@ -36,15 +36,4 @@ router.post('/', function (req, res) {
 });
 
 
-router.get('/', function (req, res) {
-    var rentalRequestServiceInst = new RentalRequestService();
-    return rentalRequestServiceInst.findRentalRequest(req.query)
-        .then((data) => {
-            res.send({ "status": "SUCCESS", message: "Rental requests Fetched Successfully", data: data });
-        })
-        .catch((err) => {
-            res.status(500).send({ status: "Failed" , message: "rental requests Couldn't be fetched successfully", error: err});
-        });
-});
-
 module.exports = router;

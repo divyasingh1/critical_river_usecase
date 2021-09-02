@@ -8,8 +8,11 @@ require('./db');
 var rentalRequestController = require('./contoller/RentalRequestController');
 var propertyController = require('./contoller/PropertyController');
 var userController = require('./contoller/UserController');
+var noauthController = require('./contoller/NoauthController.js')
 
 app.use('/api/user', userController);
+app.use('/api/noauth', noauthController);
+
 
 app.use('/api/user/rental_request', verify_user );
 app.use('/api/user/rental_request', rentalRequestController);
