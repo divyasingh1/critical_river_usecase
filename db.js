@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/solana_dev1', { useNewUrlParser: true });
+var url = process.env.db || 'mongodb://localhost:27017/solana1';
+mongoose.connect(url, { useNewUrlParser: true });
 mongoose.connection.on('connected', ()=>{
     console.log('connected to db');
 });

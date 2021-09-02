@@ -24,7 +24,7 @@ class UserModel {
 
     createUser(details) {
         details._id = uuidv4();
-        details.UserId = uuidv4();
+        details.userId = uuidv4();
         return new Promise(function (resolve, reject) {
             return User.create(details, function (err, User) {
                 if (err) {

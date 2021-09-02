@@ -8,13 +8,16 @@ router.use(bodyParser.json());
 
 router.post('/', function (req, res) {
     var UserServiceInst = new UserService();
+    if(!req.body.emailId || !req.body.publicKey){
+        res.status(400).send({ status: "Failed",  message:"emailId and publicKey are required" });
+    }
     return UserServiceInst.createUser(req.body)
         .then((data) => {
             res.send({ "status": "SUCCESS" , message: "User Created Successfully", data});
         })
         .catch((err) => {
             console.log("Error in create User", err);
-            res.status(400).send({ status: "Failed",  message: "User Couldn't be fetched successfully", error: err });
+            res.status(400).send({ status: "Failed",  message: "User Couldn't be created successfully", error: err });
         });
 });
 

@@ -20,7 +20,7 @@ router.patch('/:propertyId', function (req, res) {
 
 router.post('/', function (req, res) {
     var propertyServiceInst = new PropertyService();
-    req.userId = "321"
+    req.userId = req.user.userId;
     return propertyServiceInst.createProperty(req.userId, req.body)
         .then((data) => {
             res.send({ "status": "SUCCESS" , message: "Property Created Successfully", data});

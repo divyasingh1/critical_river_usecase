@@ -16,6 +16,12 @@ class UserService {
         if(filter.userId){
             dbFilter.userId =  filter.userId;
         }
+        if(filter.emailId){
+            dbFilter.emailId =  filter.emailId;
+        }
+        if(filter.publicKey){
+            dbFilter.publicKey =  filter.publicKey;
+        }
         var UserModelInst = new UserModel();
         return UserModelInst.findUser(dbFilter);
     }
@@ -26,9 +32,10 @@ class UserService {
         return UserModelInst.updateUser(id, data);
     }
 
-    findByEmail(username) {
+    findByPublicKey(publicKey) {
         let dbFilter = {};
-        dbFilter.userId =  username;
+        dbFilter.publicKey =  publicKey;
+        var UserModelInst = new UserModel();
         return UserModelInst.findUser(dbFilter);
     }
 }

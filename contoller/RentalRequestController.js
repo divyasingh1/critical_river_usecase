@@ -9,7 +9,7 @@ router.use(bodyParser.json());
 
 router.patch('/:rentalRequestId', function (req, res) {
     var rentalRequestServiceInst = new RentalRequestService();
-    req.userId = "321";
+    req.userId = req.user.userId;
     return rentalRequestServiceInst.updateRentalRequest(req.params.rentalRequestId, req.userId)
         .then((data) => {
             res.send({ "status": "SUCCESS", message: "Rental request Approved successfully"});
@@ -22,7 +22,7 @@ router.patch('/:rentalRequestId', function (req, res) {
 
 router.post('/', function (req, res) {
     var rentalRequestServiceInst = new RentalRequestService();
-    req.userId = "4321";//todo
+    req.userId = req.user.userId;
     if(!req.body.propertyId){
         return res.status(400).send({ status: "Failed" , message: "PropertyId is required"});
     }

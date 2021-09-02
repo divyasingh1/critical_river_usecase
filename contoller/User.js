@@ -10,7 +10,8 @@ var UserSchema = new mongoose.Schema({
     },
     publicKey:{
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
     userId:{
         type: String,
