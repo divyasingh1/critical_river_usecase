@@ -5,17 +5,14 @@ class UserService {
     constructor() {
     }
 
-    createUser(userId,details) {
-        details.userId = userId;
+    createUser(details) {
+        // details.userId = userId;
         var UserModelInst = new UserModel();
         return UserModelInst.createUser(details);
     }
     
     findUser(filter){
         let dbFilter = {};
-        if(filter.UserId){
-            dbFilter.UserId = filter.UserId;
-        }
         if(filter.userId){
             dbFilter.userId =  filter.userId;
         }
@@ -27,6 +24,12 @@ class UserService {
     updateUser(id, data){
         var UserModelInst = new UserModel();
         return UserModelInst.updateUser(id, data);
+    }
+
+    findByEmail(username) {
+        let dbFilter = {};
+        dbFilter.userId =  username;
+        return UserModelInst.findUser(dbFilter);
     }
 }
 

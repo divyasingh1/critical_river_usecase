@@ -5,13 +5,13 @@ var _ = require('lodash');
 // const  secretkey =  process.env.secretkey || 'secretkey';
 var user = require('../controller/user');
 
-function verify_user(username, public_key) {
+async function verify_user(username, public_key) {
     _user = user.findByEmail(username); // XXX: Will this work?
     if (_user) {
         return _user;
     }
     else {
-        return null;
+        return res.status(401).send("Access Denied!");
     }
 }
 
@@ -36,13 +36,8 @@ async function managerAuth(req, res, next) {
             if(userFromdb.email !== user.email){
                 return res.status(401).send("Access denied!!");
             }
-            if (user.role === 'manager') {
-                req.user = user;
-                req.manager_id = user.manager_id;
-                return next();
-            } else {
-                return res.status(401).send("Access denied!!");
-            }
+            req.user = user;
+            return next();
         }
         return res.status(401).send("Access denied!");
     } catch (err) {

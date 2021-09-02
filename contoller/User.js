@@ -12,15 +12,11 @@ var UserSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    UserId:{
-        type: String,
-        require: true
-    },
     userId:{
         type: String,
         required: true
     },
-    UserName:{
+    userName:{
         type: String
     }
 },
