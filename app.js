@@ -9,6 +9,7 @@ require('./db');
 // var noauthStaffContoller = require('./contoller/NoauthStaffController');
 var rentalRequestController = require('./contoller/RentalRequestController');
 var propertyController = require('./contoller/PropertyController');
+var userController = require('./contoller/UserController');
 
 // app.use('/api/manager', noauthManagerContoller);
 // app.use('/api/staff', noauthStaffContoller);
@@ -18,5 +19,6 @@ app.use('/api/user/rental_request', rentalRequestController);
 
 // app.use('/api/user/property', staffAuth );
 app.use('/api/user/property', propertyController);
+app.use('/api/user', userController);
 
 module.exports = app;
